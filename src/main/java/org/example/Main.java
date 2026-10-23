@@ -103,9 +103,7 @@ public class Main {
 
         //Muestra por consola los productos disponibles
         System.out.println("Mostrar por consola los productos disponibles");
-        for (Producto producto : productos) {
-            System.out.println(producto);
-        }
+        productos.stream().filter(producto -> producto.getDisponible()).forEach(producto -> System.out.println(producto));
 
         //Mostrar por consola la cantidad de items que tiene un pedido
         System.out.println("Cantidad de items para el pedido 1");

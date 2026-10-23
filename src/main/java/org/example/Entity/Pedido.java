@@ -54,13 +54,12 @@ public class Pedido extends Base implements Calculable {
         if  (detallepedido != null) {
             detallepedidos.remove(detallepedido);
         }
+
+        calcularTotal();
     }
 
     @Override
     public void calcularTotal() {
-        double total = 0;
-        for  (DetallePedido detallepedido : detallepedidos) {
-            total += detallepedido.getSubtotal();
-        }
+        this.total = detallepedidos.stream().map(detalle -> detalle.getSubtotal()).reduce(0.0, (acumulador, subtotal) -> acumulador + subtotal);
     }
 }
