@@ -101,10 +101,18 @@ public class Main {
         usuario1.addPedido(pedido2);
         usuario2.addPedido(pedido3);
 
-        //Lista de usuarios
-        List<Usuario> usuarios = [usuario1; usuario2;];
-
         //Muestra por consola los productos disponibles
-        for (Pedido pedido : ) {}
+        System.out.println("Mostrar por consola los productos disponibles");
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
+
+        //Mostrar por consola la cantidad de items que tiene un pedido
+        System.out.println("Cantidad de items para el pedido 1");
+        System.out.println(pedido1.getDetallepedidos().stream().map(detallePedido -> detallePedido.getCantidad()).reduce(0, (acumulador, cantidad) -> acumulador + cantidad));
+
+        //Productos que tengan menos de 5 como valor en stock
+        System.out.println("Productos con stock menor a 5");
+        productos.stream().filter(producto -> producto.getStock() < 5).forEach(producto -> System.out.println(producto));
     }
 }
